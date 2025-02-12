@@ -1,6 +1,7 @@
 @use 'sass:math';
 
 @import './icomoon/icomoon.css';
+@import './gallery.scss';
 
 $formWidth: 550px;
 
@@ -352,6 +353,7 @@ select {
   position: fixed;
   top: 20px;
   right: 20px;
+  z-index: 100;
 
   button {
     display: flex;
@@ -363,6 +365,8 @@ select {
     background: white;
     cursor: pointer;
     transition: 200ms;
+    width: auto;
+    min-width: fit-content;
     
     &:hover {
       background: #f7f9f9;
@@ -483,5 +487,85 @@ select {
     &:hover {
       background: #b91c1c;
     }
+  }
+}
+
+.title-container {
+  text-align: center;
+  margin: 120px 0 40px;
+  padding: 0 20px;
+
+  h1 {
+    font-size: 48px;
+    font-weight: 900;
+    margin: 0;
+    color: #1d9bf0;
+    letter-spacing: -1px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    color: #536471;
+    margin: 8px 0 0;
+    font-style: italic;
+  }
+}
+
+@media (max-width: $mobile-max) {
+  .title-container {
+    margin: 120px 0 30px;
+
+    h1 {
+      font-size: 36px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+    }
+  }
+
+  .gallery-link {
+    position: fixed;
+    right: 20px;
+  }
+
+  form {
+    padding: 20px;
+  }
+
+  .narrowInputs {
+    &.two, &.three {
+      .inputWrapper {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  .generatedImageWrapper {
+    margin-top: 20px;
+
+    .saveImageButton {
+      right: 15px;
+      bottom: 15px;
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+    }
+  }
+
+  .modal-overlay .modal-content {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .socials {
+    margin-top: 30px;
+    padding-bottom: 20px;
   }
 }

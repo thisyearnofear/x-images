@@ -54,7 +54,7 @@ export default () => {
   return (
     <div>
       <Head>
-        <title>duology</title>
+        <title>DUOLOGY</title>
       </Head>
 
       <div style={{ position: 'fixed', top: '20px', left: '20px', zIndex: 1000 }}>
@@ -67,6 +67,11 @@ export default () => {
             <i className='icon icon-photo_library' /> View Gallery
           </button>
         </Link>
+      </div>
+
+      <div className="title-container">
+        <h1>DUOLOGY</h1>
+        <p className="subtitle">duo's eulogy</p>
       </div>
 
       <Form
