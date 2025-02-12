@@ -1,10 +1,10 @@
-# x-image
+# duology
 
 Convert X posts to images
 
 ## Try Out
 
-[https://x-image.vercel.app](https://x-image.vercel.app)
+[https://duology.vercel.app](https://duology.vercel.app)
 
 ## Preview
 
@@ -12,7 +12,7 @@ Convert X posts to images
 
 ## Contribution
 
-Feel free to contribute. Open a new [issue](https://github.com/ozgrozer/x-image/issues), or make a [pull request](https://github.com/ozgrozer/x-image/pulls).
+Feel free to contribute. Open a new [issue](https://github.com/ozgrozer/duology/issues), or make a [pull request](https://github.com/ozgrozer/duology/pulls).
 
 ## License
 

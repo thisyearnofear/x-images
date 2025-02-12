@@ -1,7 +1,13 @@
-import './../styles/style.scss'
+import "./../styles/style.scss";
 
-export default ({ Component, pageProps }) => {
+import { Web3Provider } from "../components/Web3Provider";
+
+function MyApp({ Component, pageProps }) {
   return (
-    <Component {...pageProps} />
-  )
+    <Web3Provider>
+      <Component {...pageProps} />
+    </Web3Provider>
+  );
 }
+
+export default MyApp;
