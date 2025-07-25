@@ -21,6 +21,6 @@
       "@/providers/*": ["lib/providers/*"]
     }
   },
-  "include": ["next-env.d.ts", "lib/**/*", "components/**/*", "pages/**/*", "scripts/**/*"],
+  "include": ["next-env.d.ts", "types/global.d.ts", "lib/**/*", "components/**/*", "pages/**/*", "scripts/**/*"],
   "exclude": ["node_modules"]
 }
