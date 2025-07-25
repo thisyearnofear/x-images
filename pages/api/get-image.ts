@@ -1,12 +1,22 @@
+import { NextApiRequest, NextApiResponse } from "next";
 import puppeteer from "puppeteer";
 import puppeteerCore from "puppeteer-core";
 import chromium from "@sparticuz/chromium";
-import { getPostData } from "../../lib/providers";
+import { getPostData } from "@/lib/providers";
+
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
 
 export const maxDuration = 60;
 export const dynamic = "force-dynamic";
 
-export default async (req, res) => {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const { url } = req.body;
     if (!url) {
@@ -21,6 +31,7 @@ export default async (req, res) => {
     }
 
     // Log which provider was used
+    // eslint-disable-next-line no-console
     console.log("Provider:", post.network);
 
     // Use first image if present
@@ -148,8 +159,7 @@ export default async (req, res) => {
       </html>
     `;
 
-    // Puppeteer logic (same as before)
-    let browser;
+    let browser: puppeteer.Browser | puppeteerCore.Browser;
     if (process.env.VERCEL_ENV === "production") {
       const executablePath = await chromium.executablePath();
       browser = await puppeteerCore.launch({
@@ -169,9 +179,8 @@ export default async (req, res) => {
     await page.setContent(html, { waitUntil: "networkidle0" });
     await page.setViewport({ width: 680, height: 2000 });
 
-    // Get the actual dimensions of the content
     const dimensions = await page.evaluate(() => {
-      const container = document.querySelector(".post-container");
+      const container = document.querySelector(".post-container") as HTMLElement;
       const rect = container.getBoundingClientRect();
       return {
         width: Math.ceil(rect.width),
@@ -195,17 +204,9 @@ export default async (req, res) => {
     }
 
     res.json({ data: imageBuffer });
-  } catch (err) {
+  } catch (err: any) {
+    // eslint-disable-next-line no-console
     console.error(err);
     res.status(500).json({ error: err.message });
   }
-};
-
-function escapeHtml(text) {
-  return text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
 }

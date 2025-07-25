@@ -1,7 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL as string;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string;
 
 if (!supabaseUrl || !supabaseAnonKey) {
   console.error("Missing Supabase credentials");
@@ -10,12 +10,11 @@ if (!supabaseUrl || !supabaseAnonKey) {
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 // Helper functions for gallery operations
-export async function saveImageToGallery({ imageData, attribution }) {
+export async function saveImageToGallery({ imageData, attribution }: { imageData: string; attribution: string; }) {
   try {
     // Convert base64 to blob (browser-safe)
     const base64Data = imageData.replace(/^data:image\/\w+;base64,/, "");
-    // Browser-friendly base64 to Uint8Array
-    function base64ToUint8Array(base64) {
+    function base64ToUint8Array(base64: string): Uint8Array {
       const binary = atob(base64);
       const len = binary.length;
       const bytes = new Uint8Array(len);
@@ -72,7 +71,7 @@ export async function saveImageToGallery({ imageData, attribution }) {
     }
 
     console.log("Database entry created:", data);
-    return data[0];
+    return data && data[0];
   } catch (error) {
     console.error("Detailed error:", error);
     throw error;
@@ -94,7 +93,7 @@ export async function getGalleryImages() {
   }
 }
 
-export async function updateImageDimensions(id, dimensions) {
+export async function updateImageDimensions(id: string, dimensions: any) {
   try {
     const { data, error } = await supabase
       .from("gallery_images")
@@ -103,7 +102,7 @@ export async function updateImageDimensions(id, dimensions) {
       .select();
 
     if (error) throw error;
-    return data[0];
+    return data && data[0];
   } catch (error) {
     console.error("Error updating dimensions:", error);
     throw error;

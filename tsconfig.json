@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "lib": ["dom", "dom.iterable", "es2021"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "noEmit": true,
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@/lib/*": ["lib/*"],
+      "@/providers/*": ["lib/providers/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "types/global.d.ts", "lib/**/*", "components/**/*", "pages/**/*", "scripts/**/*"],
+  "exclude": ["node_modules"]
+}
