@@ -20,6 +20,9 @@ Convert social posts (Farcaster, Lens, and X/Twitter) to images
 
 ## Environment Variables
 
+See [`.env.example`](./.env.example) for the minimal list.  
+Copy it to `.env` and fill in your Supabase keys.
+
 - `NEYNAR_API_KEY` (optional, for Farcaster; otherwise uses public endpoints with lower rate-limits)
 - No Twitter API or RapidAPI keys are required.
 
