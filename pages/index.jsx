@@ -82,14 +82,14 @@ export default () => {
         <fieldset disabled={formIsSubmitting}>
           <div className='narrowInputs one'>
             <div className='inputWrapper'>
-              <label htmlFor='xUrl'>X URL</label>
+              <label htmlFor='url'>Post URL</label>
               <div className='inputWithButton'>
                 <Input
                   type='text'
-                  id='xUrl'
-                  name='xUrl'
+                  id='url'
+                  name='url'
                   validations={validations.empty}
-                  placeholder='https://x.com/ozgrozer/status/1812591967756255298'
+                  placeholder='https://warpcast.com/~/cast/0x8b...'
                 />
 
                 <button type='submit' className='submitButton'>
