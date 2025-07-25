@@ -1,6 +1,6 @@
 export interface SocialPost {
   network: 'twitter' | 'farcaster' | 'lens';
-  externalId: string;
+  externalId: string; // tweet id, cast hash, lens id
   author: { name: string; handle: string; avatar: string };
   text: string;
   images: string[];

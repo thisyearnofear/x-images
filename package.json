@@ -34,10 +34,22 @@
     "wagmi": "^2.14.11"
   },
   "devDependencies": {
+    "@types/node": "^20.11.30",
     "@types/react": "^19.0.8",
     "dotenv": "^16.4.7",
     "sass": "^1.77.8",
     "standard": "^17.1.0",
-    "supabase": "^2.12.1"
+    "supabase": "^2.12.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "icomoon": "node ./scripts/icomoon.js",
+    "setup-supabase": "npx ts-node scripts/setup-supabase.ts"
   }
 }
